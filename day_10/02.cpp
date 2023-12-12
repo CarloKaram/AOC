@@ -138,7 +138,7 @@ int main(int argc, char *argv[]) {
     old_direction = new_direction;
   }
 
-  // Compute loop area
+  // Compute loop area - Shoelace formula
   area = path_indices[path_indices.size() - 1].col * path_indices[0].row -
          path_indices[0].col * path_indices[path_indices.size() - 1].row;
 
@@ -147,6 +147,7 @@ int main(int argc, char *argv[]) {
             path_indices[i].col * path_indices[i - 1].row;
   }
 
+  // Obtain interior points using Pick's theorem
   std::cout << "There are " << abs(area) / 2 - (loop_length / 2) + 1
             << " enclosed tiles." << std::endl;
 
